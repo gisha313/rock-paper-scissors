@@ -74,7 +74,6 @@ function playGame(){
     let result = '';
     for (let i = 0; i < 5; i++){
         result = playRound();
-        console.log(result)
         if (result === 'win') humanScore++;
         else if (result === 'loss') computerScore++;
 
