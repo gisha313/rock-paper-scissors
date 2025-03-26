@@ -9,3 +9,15 @@ function getComputerChoice() {
             return 'scissors'
     }
 }
+
+function getHumanChoice() {
+    let choice = prompt("Rock, paper, scissors?").toLowerCase();
+    if (choice === 'rock' || choice === 'paper' || choice === 'scissors')
+        return choice;
+    else {
+        alert("Incorrect input!");
+        return getHumanChoice();
+    }
+}
+
+console.log(getHumanChoice())
