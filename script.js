@@ -20,4 +20,46 @@ function getHumanChoice() {
     }
 }
 
-console.log(getHumanChoice())
+function playRound() {
+    let computerChoice = getComputerChoice()
+    let humanChoice = getHumanChoice();
+
+    let win = () => {
+        console.log(`You win! ${humanChoice} ` + 
+            (humanChoice === 'scissors' ? `beat` : `beats`)
+            + ` ${computerChoice}!`);
+        humanScore += 1
+    }
+
+    let loss = () => {
+        console.log(`You lose! ${computerChoice} ` + 
+            (computerChoice === 'scissors' ? `beat` : `beats`)
+            + ` ${humanChoice}!`);
+        computerScore += 1
+    }
+
+    let tie = () => {
+        console.log(`Tie! You both picked ${computerChoice}!`);
+    }
+
+    if (humanChoice === 'rock'){
+        if (computerChoice === 'scissors') win();
+        else if (computerChoice === 'paper') loss();
+        else tie();
+    }
+    else if (humanChoice === 'paper'){
+        if (computerChoice === 'rock') win();
+        else if (computerChoice === 'scissors') loss();
+        else tie();
+    }
+    else {
+        if (computerChoice === 'paper') win();
+        else if (computerChoice === 'rock') loss();
+        else tie();
+    }
+}
+
+let humanScore = 0
+let computerScore = 0
+
+playRound();
