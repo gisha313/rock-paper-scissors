@@ -11,7 +11,8 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let choice = prompt("Rock, paper, scissors?").toLowerCase();
+    let choice = prompt("Rock, paper, scissors?");
+    choice = choice ? choice.toLowerCase() : '';
     if (choice === 'rock' || choice === 'paper' || choice === 'scissors')
         return choice;
     else {
