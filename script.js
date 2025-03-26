@@ -26,25 +26,27 @@ function capitalize(word) {
 }
 
 function playRound() {
-    let computerChoice = getComputerChoice()
+    let computerChoice = getComputerChoice();
     let humanChoice = getHumanChoice();
+    let result = "";
 
     let win = () => {
         console.log(`You win! ${capitalize(humanChoice)} ` + 
             (humanChoice === 'scissors' ? `beat` : `beats`)
             + ` ${computerChoice}!`);
-        humanScore += 1
+            result = "win";
     }
 
     let loss = () => {
         console.log(`You lose! ${capitalize(computerChoice)} ` + 
             (computerChoice === 'scissors' ? `beat` : `beats`)
             + ` ${humanChoice}!`);
-        computerScore += 1
+            result = "loss";
     }
 
     let tie = () => {
         console.log(`Tie! You both picked ${computerChoice}!`);
+        result = "tie";
     }
 
     if (humanChoice === 'rock'){
@@ -62,9 +64,30 @@ function playRound() {
         else if (computerChoice === 'rock') loss();
         else tie();
     }
+
+    return result;
 }
 
-let humanScore = 0
-let computerScore = 0
+function playGame(){
+    let humanScore = 0;
+    let computerScore = 0;
+    let result = '';
+    for (let i = 0; i < 5; i++){
+        result = playRound();
+        console.log(result)
+        if (result === 'win') humanScore++;
+        else if (result === 'loss') computerScore++;
 
-playRound();
+        console.log(`Player vs. Computer
+        ${humanScore} : ${computerScore}`);
+    }
+
+    if (humanScore > computerScore)
+        console.log("You've won! Congrats!");
+    else if (humanScore === computerScore)
+        console.log("The game was a tie.");
+    else
+        console.log("You lose... Sorry...")
+}
+
+playGame()
