@@ -20,19 +20,23 @@ function getHumanChoice() {
     }
 }
 
+function capitalize(word) {
+    return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}
+
 function playRound() {
     let computerChoice = getComputerChoice()
     let humanChoice = getHumanChoice();
 
     let win = () => {
-        console.log(`You win! ${humanChoice} ` + 
+        console.log(`You win! ${capitalize(humanChoice)} ` + 
             (humanChoice === 'scissors' ? `beat` : `beats`)
             + ` ${computerChoice}!`);
         humanScore += 1
     }
 
     let loss = () => {
-        console.log(`You lose! ${computerChoice} ` + 
+        console.log(`You lose! ${capitalize(computerChoice)} ` + 
             (computerChoice === 'scissors' ? `beat` : `beats`)
             + ` ${humanChoice}!`);
         computerScore += 1
