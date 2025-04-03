@@ -23,6 +23,10 @@
     background-color: rgba(210, 229, 232, 0.7);
 }
 
+.game > div {
+    margin: 4px 0;
+}
+
 .score {
     display: flex;
     justify-content: center;
@@ -63,4 +67,23 @@
     border: 2px solid gray;
     font-size: 18px;
     border-radius: 8px;
+}
+
+.button-container{
+    display: flex;
+    min-width: fit-content;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.button-container > button {
+    background-color: none;
+    padding: 32px;
+    font-size: 32px;
+    border:  2px solid darkslategrey;
+    border-radius: 8px;
+}
+
+.button-container > button:hover{
+   background-color: rgba(210, 229, 232)
 }
