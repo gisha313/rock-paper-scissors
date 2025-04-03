@@ -14,6 +14,20 @@ function capitalize(word) {
     return word[0].toUpperCase() + word.slice(1).toLowerCase();
 }
 
+const displayMap = new Map([
+    ['rock', '🪨'],
+    ['paper', '📃'],
+    ['scissors', '✂️']
+]);
+
+function displayChoices(human, computer) {
+    const humanChoiceDiv = document.querySelector(".human-choice");
+    const computerChoiceDiv = document.querySelector(".computer-choice")
+
+    humanChoiceDiv.textContent = displayMap.get(human);
+    computerChoiceDiv.textContent = displayMap.get(computer);
+}
+
 function playRound(humanChoice) {
     let computerChoice = getComputerChoice();
     let result = "";
@@ -53,6 +67,7 @@ function playRound(humanChoice) {
         else tie();
     }
 
+    displayChoices(humanChoice, computerChoice)
     return result;
 }
 
