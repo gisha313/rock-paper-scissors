@@ -132,10 +132,11 @@ let computerScore = 0;
 
 const btnContainer = document.querySelector('.button-container');
 btnContainer.addEventListener('click', (event) => {
-    let targetId = event.target.id || 'paper';
-    let result = playRound(targetId);
-    
-    update(result);
+    let targetId = event.target.id;
+    if (targetId) {
+        let result = playRound(targetId);
+        update(result);
+    }
 });
 
 const humanScoreDiv = document.querySelector('#human-score');
