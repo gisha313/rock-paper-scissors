@@ -31,24 +31,28 @@ function displayChoices(human, computer) {
 function playRound(humanChoice) {
     let computerChoice = getComputerChoice();
     let result = "";
+    const arenaDiv = document.querySelector('.arena');
 
     let win = () => {
         console.log(`You win! ${capitalize(humanChoice)} ` + 
             (humanChoice === 'scissors' ? `beat` : `beats`)
             + ` ${computerChoice}!`);
-            result = "win";
+        result = "win";
+        arenaDiv.style.cssText = 'background-color: rgb(87, 235, 68, 0.5)'
     }
 
     let loss = () => {
         console.log(`You lose! ${capitalize(computerChoice)} ` + 
             (computerChoice === 'scissors' ? `beat` : `beats`)
             + ` ${humanChoice}!`);
-            result = "loss";
+        result = "loss";
+        arenaDiv.style.cssText = 'background-color: rgb(237, 33, 33, 0.5)';
     }
 
     let tie = () => {
         console.log(`Tie! You both picked ${computerChoice}!`);
         result = "tie";
+        arenaDiv.style.cssText = 'background-color: rgb(244, 250, 125, 0.5)';
     }
 
     if (humanChoice === 'rock'){
