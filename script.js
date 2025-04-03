@@ -56,8 +56,24 @@ function playRound(humanChoice) {
     return result;
 }
 
+let humanScore = 0;
+let computerScore = 0;
+
 const btnContainer = document.querySelector('.button-container');
 btnContainer.addEventListener('click', (event) => {
     let targetId = event.target.id;
-    playRound(targetId);
+    let result = playRound(targetId);
+
+    humanScore = result === 'win' ? humanScore + 1 : humanScore;
+    computerScore = result === 'loss' ? computerScore + 1 : computerScore;
+
+    humanScoreDiv.textContent = humanScore;
+    computerScoreDiv.textContent = computerScore;
+    
 });
+
+const humanScoreDiv = document.querySelector('#human-score');
+const computerScoreDiv = document.querySelector('#computer-score');
+
+humanScoreDiv.textContent = 0;
+computerScoreDiv.textContent = 0;
