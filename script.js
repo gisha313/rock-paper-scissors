@@ -80,7 +80,7 @@ let computerScore = 0;
 
 const btnContainer = document.querySelector('.button-container');
 btnContainer.addEventListener('click', (event) => {
-    let targetId = event.target.id;
+    let targetId = event.target.id || 'paper';
     let result = playRound(targetId);
 
     humanScore = result === 'win' ? humanScore + 1 : humanScore;
