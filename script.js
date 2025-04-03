@@ -115,13 +115,11 @@ function update(result) {
         btnContainer.appendChild(yesBtn);
         btnContainer.appendChild(noBtn);
 
-        yesBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
+        yesBtn.addEventListener('click', () => {
             location.reload();
         });
 
-        noBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
+        noBtn.addEventListener('click', () => {
             alert(`You don't have a choice.`)
             location.reload();
         });
