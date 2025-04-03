@@ -14,6 +14,19 @@ function capitalize(word) {
     return word[0].toUpperCase() + word.slice(1).toLowerCase();
 }
 
+const displayMap = new Map(
+    ['rock', '🪨'],
+    ['paper', '📃'],
+    ['scissors', '✂️']
+);
+
+function displayChoices(human, computer) {
+    const humanChoiceDiv = document.querySelector(".human-choice");
+    const computerChoiceDiv = document.querySelector(".computer-choice")
+
+    const 
+}
+
 function playRound(humanChoice) {
     let computerChoice = getComputerChoice();
     let result = "";
@@ -22,14 +35,14 @@ function playRound(humanChoice) {
         console.log(`You win! ${capitalize(humanChoice)} ` + 
             (humanChoice === 'scissors' ? `beat` : `beats`)
             + ` ${computerChoice}!`);
-            result = "win";
+        result = "win";
     }
 
     let loss = () => {
         console.log(`You lose! ${capitalize(computerChoice)} ` + 
             (computerChoice === 'scissors' ? `beat` : `beats`)
             + ` ${humanChoice}!`);
-            result = "loss";
+        result = "loss";
     }
 
     let tie = () => {
@@ -56,8 +69,24 @@ function playRound(humanChoice) {
     return result;
 }
 
+let humanScore = 0;
+let computerScore = 0;
+
 const btnContainer = document.querySelector('.button-container');
 btnContainer.addEventListener('click', (event) => {
     let targetId = event.target.id;
-    playRound(targetId);
+    let result = playRound(targetId);
+
+    humanScore = result === 'win' ? humanScore + 1 : humanScore;
+    computerScore = result === 'loss' ? computerScore + 1 : computerScore;
+
+    humanScoreDiv.textContent = humanScore;
+    computerScoreDiv.textContent = computerScore;
+    
 });
+
+const humanScoreDiv = document.querySelector('#human-score');
+const computerScoreDiv = document.querySelector('#computer-score');
+
+humanScoreDiv.textContent = 0;
+computerScoreDiv.textContent = 0;
