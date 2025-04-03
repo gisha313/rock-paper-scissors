@@ -10,24 +10,12 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    let choice = prompt("Rock, paper, scissors?");
-    choice = choice ? choice.toLowerCase() : '';
-    if (choice === 'rock' || choice === 'paper' || choice === 'scissors')
-        return choice;
-    else {
-        alert("Incorrect input!");
-        return getHumanChoice();
-    }
-}
-
 function capitalize(word) {
     return word[0].toUpperCase() + word.slice(1).toLowerCase();
 }
 
-function playRound() {
+function playRound(humanChoice) {
     let computerChoice = getComputerChoice();
-    let humanChoice = getHumanChoice();
     let result = "";
 
     let win = () => {
