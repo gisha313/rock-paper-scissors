@@ -68,25 +68,4 @@ function playRound() {
     return result;
 }
 
-function playGame(){
-    let humanScore = 0;
-    let computerScore = 0;
-    let result = '';
-    for (let i = 0; i < 5; i++){
-        result = playRound();
-        if (result === 'win') humanScore++;
-        else if (result === 'loss') computerScore++;
-
-        console.log(`Player vs. Computer
-        ${humanScore} : ${computerScore}`);
-    }
-
-    if (humanScore > computerScore)
-        console.log("You've won! Congrats!");
-    else if (humanScore === computerScore)
-        console.log("The game was a tie.");
-    else
-        console.log("You lose... Sorry...")
-}
-
 playGame()
