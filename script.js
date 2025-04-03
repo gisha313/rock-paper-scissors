@@ -77,6 +77,56 @@ function playRound(humanChoice) {
     return result;
 }
 
+function update(result) {
+    humanScore = result === 'win' ? humanScore + 1 : humanScore;
+    computerScore = result === 'loss' ? computerScore + 1 : computerScore;
+
+    humanScoreDiv.textContent = humanScore;
+    computerScoreDiv.textContent = computerScore;
+
+
+    if (humanScore === 5 && computerScore === 5){
+        msgBox.textContent = `It's a tie! Play again?!`;
+        document.body.style.cssText = 'background-color: rgb(244, 250, 125, 0.5)';
+    }
+        
+    else if (humanScore === 5){
+        msgBox.textContent = `You won!!! Play again?!`;
+        document.body.style.cssText = 'background-color: rgb(87, 235, 68, 0.5)';
+    }
+        
+    else if (computerScore === 5){
+        msgBox.textContent = `You lost... Play again?!`;
+        document.body.style.cssText = 'background-color: rgb(237, 33, 33, 0.5)';
+    }
+
+    if (humanScore === 5 || computerScore === 5){
+        const buttons = document.querySelectorAll('.button-container > button');
+        buttons.forEach((btn) => {
+            btnContainer.removeChild(btn);
+        });
+
+        const yesBtn = document.createElement('button');
+        yesBtn.textContent = 'Yes'
+
+        const noBtn = document.createElement('button');
+        noBtn.textContent = 'Nah'
+
+        btnContainer.appendChild(yesBtn);
+        btnContainer.appendChild(noBtn);
+
+        yesBtn.addEventListener('click', () => {
+            location.reload();
+        });
+
+        noBtn.addEventListener('click', () => {
+            alert(`You don't have a choice.`)
+            location.reload();
+        });
+
+    }
+}
+
 let humanScore = 0;
 let computerScore = 0;
 
@@ -84,13 +134,8 @@ const btnContainer = document.querySelector('.button-container');
 btnContainer.addEventListener('click', (event) => {
     let targetId = event.target.id || 'paper';
     let result = playRound(targetId);
-
-    humanScore = result === 'win' ? humanScore + 1 : humanScore;
-    computerScore = result === 'loss' ? computerScore + 1 : computerScore;
-
-    humanScoreDiv.textContent = humanScore;
-    computerScoreDiv.textContent = computerScore;
     
+    update(result);
 });
 
 const humanScoreDiv = document.querySelector('#human-score');
