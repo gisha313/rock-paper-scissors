@@ -20,6 +20,9 @@ const displayMap = new Map([
     ['scissors', '✂️']
 ]);
 
+const arenaDiv = document.querySelector('.arena');
+const msgBox = document.querySelector('.msg');
+
 function displayChoices(human, computer) {
     const humanChoiceDiv = document.querySelector(".human-choice");
     const computerChoiceDiv = document.querySelector(".computer-choice")
@@ -31,10 +34,9 @@ function displayChoices(human, computer) {
 function playRound(humanChoice) {
     let computerChoice = getComputerChoice();
     let result = "";
-    const arenaDiv = document.querySelector('.arena');
 
     let win = () => {
-        console.log(`You win! ${capitalize(humanChoice)} ` + 
+        msgBox.textContent = (`You win! ${capitalize(humanChoice)} ` + 
             (humanChoice === 'scissors' ? `beat` : `beats`)
             + ` ${computerChoice}!`);
         result = "win";
@@ -42,7 +44,7 @@ function playRound(humanChoice) {
     }
 
     let loss = () => {
-        console.log(`You lose! ${capitalize(computerChoice)} ` + 
+        msgBox.textContent = (`You lose! ${capitalize(computerChoice)} ` + 
             (computerChoice === 'scissors' ? `beat` : `beats`)
             + ` ${humanChoice}!`);
         result = "loss";
@@ -50,7 +52,7 @@ function playRound(humanChoice) {
     }
 
     let tie = () => {
-        console.log(`Tie! You both picked ${computerChoice}!`);
+        msgBox.textContent = (`Tie! You both picked ${computerChoice}!`);
         result = "tie";
         arenaDiv.style.cssText = 'background-color: rgb(244, 250, 125, 0.5)';
     }
