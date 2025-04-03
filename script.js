@@ -56,4 +56,8 @@ function playRound(humanChoice) {
     return result;
 }
 
-playGame()
+const btnContainer = document.querySelector('.button-container');
+btnContainer.addEventListener('click', (event) => {
+    let targetId = event.target.id;
+    playRound(targetId);
+});
